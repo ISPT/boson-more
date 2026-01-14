@@ -2,7 +2,7 @@ module Boson
   module MoreUtil
     # Behaves just like the unix which command, returning the full path to an executable based on ENV['PATH'].
     def which(command)
-      ENV['PATH'].split(File::PATH_SEPARATOR).map {|e| File.join(e, command) }.find {|e| File.exists?(e) }
+      ENV['PATH'].split(File::PATH_SEPARATOR).map {|e| File.join(e, command) }.find {|e| File.exist?(e) }
     end
 
     # Deep copies any object if it can be marshaled. Useful for deep hashes.

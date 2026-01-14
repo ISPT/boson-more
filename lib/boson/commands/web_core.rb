@@ -51,7 +51,7 @@ module Boson::Commands::WebCore
     options[:name] ||= strip_name_from_url(url)
     return puts("Please give a library name for this url.") if options[:name].empty?
     filename = File.join ::Boson.repo.commands_dir, "#{options[:name]}.rb"
-    return puts("Library name #{options[:name]} already exists. Try a different name.") if File.exists?(filename) && !options[:force]
+    return puts("Library name #{options[:name]} already exists. Try a different name.") if File.exist?(filename) && !options[:force]
 
     file_string = get(url) or raise "Unable to fetch url"
     file_string = "# Originally from #{url}\n"+file_string

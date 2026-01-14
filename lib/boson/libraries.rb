@@ -147,7 +147,7 @@ module Boson
           if (meth_locations = MethodInspector.find_class_method_locations(klass, meth))
             file_string = File.read meth_locations[0]
           end
-        elsif File.exists?(lib.library_file || '')
+        elsif File.exist?(lib.library_file || '')
           file_string, meth = FileLibrary.read_library_file(lib.library_file), @name
         end
         [file_string, meth]

@@ -28,7 +28,7 @@ module Boson
         store[:args] ||= {}
         file = find_method_locations(mod, meth)[0]
 
-        if File.exists?(file)
+        if File.exist?(file)
           body = File.read(file)
           store[:args][meth.to_s] = self.class.scrape_arguments body, meth
         end

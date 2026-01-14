@@ -58,7 +58,7 @@ module Boson
     end
 
     def exists?
-      File.exists? marshal_file
+      File.exist? marshal_file
     end
 
     def save_marshal_index(marshal_string)
@@ -122,7 +122,7 @@ module Boson
     def latest_hashes
       repo.all_libraries.inject({}) {|h, e|
         lib_file = FileLibrary.library_file(e, repo.dir)
-        h[e] = Digest::MD5.hexdigest(File.read(lib_file)) if File.exists?(lib_file)
+        h[e] = Digest::MD5.hexdigest(File.read(lib_file)) if File.exist?(lib_file)
         h
       }
     end

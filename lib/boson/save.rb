@@ -35,7 +35,7 @@ module Boson
 
     # Optional global repository at /etc/boson
     def global_repo
-      File.exists?('/etc/boson') ? Repo.new('/etc/boson') : nil
+      File.exist?('/etc/boson') ? Repo.new('/etc/boson') : nil
     end
   end
   extend Save
@@ -81,7 +81,7 @@ module Boson
 
       def add_load_path
         Boson.repos.each {|repo|
-          if repo.config[:add_load_path] || File.exists?(File.join(repo.dir, 'lib'))
+          if repo.config[:add_load_path] || File.exist?(File.join(repo.dir, 'lib'))
             $: <<  File.join(repo.dir, 'lib') unless $:.include? File.expand_path(File.join(repo.dir, 'lib'))
           end
         }
