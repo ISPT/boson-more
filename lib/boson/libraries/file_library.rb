@@ -83,7 +83,7 @@ module Boson
     end
 
     handles {|source|
-      @repo = Boson.repos.find {|e| File.exists? library_file(source.to_s, e.dir) } ||
+      @repo = Boson.repos.find {|e| File.exist? library_file(source.to_s, e.dir) } ||
        Boson.repos.find {|e|
         Dir["#{e.commands_dir}/**/*.rb"].grep(/\/#{source}\.rb/).size == 1
         }
@@ -99,7 +99,7 @@ module Boson
     end
 
     def set_name(name)
-      @lib_file = File.exists?(library_file(name.to_s)) ? library_file(name.to_s) :
+      @lib_file = File.exist?(library_file(name.to_s)) ? library_file(name.to_s) :
         Dir[self.class.matched_repo.commands_dir.to_s+'/**/*.rb'].find {|e| e =~ /\/#{name}\.rb$/}
       @lib_file.gsub(/^#{self.class.matched_repo.commands_dir}\/|\.rb$/, '')
     end

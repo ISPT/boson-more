@@ -31,7 +31,7 @@ module Boson
     module MoreInspector
       def inspector_in_file?(meth, inspector_method)
         return false if !super
-        if File.exists?(file_line[0]) && (options = CommentInspector.scrape(
+        if File.exist?(file_line[0]) && (options = CommentInspector.scrape(
           FileLibrary.read_library_file(file_line[0]), file_line[1], @current_module, inspector_method) )
           (store[inspector_method] ||= {})[meth] = options
         end

@@ -9,7 +9,7 @@
 #   => true
 class Boson::LocalFileLibrary < Boson::FileLibrary
   handles {|source|
-    @repo = (File.exists?(source.to_s) ? (Boson.local_repo || Boson.repo) : nil)
+    @repo = (File.exist?(source.to_s) ? (Boson.local_repo || Boson.repo) : nil)
     !!@repo
   }
 

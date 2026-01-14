@@ -65,7 +65,7 @@ module Boson
       if reload || @config.nil?
         begin
           @config = Boson::CONFIG.dup
-          @config.merge!(YAML::load_file(config_file(true))) if File.exists?(config_file)
+          @config.merge!(YAML::load_file(config_file(true))) if File.exist?(config_file)
         rescue ArgumentError
           message = $!.message !~ /syntax error on line (\d+)/ ? "Error"+$!.message :
             "Error: Syntax error in line #{$1} of config file '#{config_file}'"
